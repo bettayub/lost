@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost and Found</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="main">
+        <nav>
+            <div class="logo">
+                <img src="/images/logo1.png" alt="logo">
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="#" onclick="refreshPage()">Home</a></li>
+                    <li><a href="#" id="signInLink" onclick="showSignIn()">Sign in</a></li>
+                    <li><a href="#" id="signUpLink" onclick="showSignUp()">Sign up</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="info">
+            <div class="overlay"></div>
+            <div id="circle"> 
+                <div class="items one">
+                    <img src="/images/phone.webp" alt="phone">
+                    <div>
+                        <h3>phone </h3>
+                        <p>I lost a black iphone</p>
+                    </div>
+                </div>
+                <div class="items two">
+                    <img src="/images/phone.webp" alt="phone">
+                    <div>
+                        <h3>phone </h3>
+                        <p>I lost a black iphone</p>
+                    </div>
+                </div>
+                <div class="items three">
+                    <img src="/images/phone.webp" alt="phone">
+                    <div>
+                        <h3>phone </h3>
+                        <p>I lost a black iphone</p>
+                    </div>
+                </div>
+                <div class="items four">
+                    <img src="/images/phone.webp" alt="phone">
+                    <div>
+                        <h3>phone </h3>
+                        <p>I lost a black iphone</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="reportLostBtn">Report Lost Items</button>
+            <button id="reportFoundBtn">Report Found Items</button>
+            <img src="/images/arrow-up.webp" id="upBtn">
+            <img src="/images/arrow-down.png" id="downBtn">
+        </div>
+        <div id="itemsContainer"></div>
+    </div>
+
+    <!-- Sign-in Form -->
+    <div id="signInForm" class="form-container">
+        <form class="form" onsubmit="signIn()">
+            <h2>Sign in</h2>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Sign in</button>
+        </form>
+    </div>
+
+    <!-- Sign-up Form -->
+    <div id="signUpForm" class="form-container">
+        <form class="form" onsubmit="signUp()">
+            <h2>Sign up</h2>
+            <input type="text" placeholder="Username" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Sign up</button>
+        </form>
+    </div>
+
+    <div id="messageContainer" class="message-container"></div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
