@@ -1,23 +1,4 @@
-var circle = document.getElementById("circle");
-var upBtn = document.getElementById("upBtn");
-var downBtn = document.getElementById("downBtn");
 
-var rotateValue = circle.style.transform;
-var rotateSum;
-
-upBtn.onclick = function ()
-{
-    rotateSum = rotateValue + "rotate(-90deg)";
-    circle.style.transform = rotateSum;
-    rotateValue = rotateSum;
-}
-
-downBtn.onclick = function ()
-{
-    rotateSum = rotateValue + "rotate(90deg)";
-    circle.style.transform = rotateSum;
-    rotateValue = rotateSum;
-}
 function showSignIn() {
     document.getElementById("signInForm").style.display = "block";
     document.getElementById("signUpForm").style.display = "none";
@@ -69,14 +50,15 @@ document.getElementById("signUpLink").addEventListener("click", showSignUp);
 document.getElementById("signInForm").addEventListener("submit", signIn);
 document.getElementById("signUpForm").addEventListener("submit", signUp);
 
+
 document.addEventListener("DOMContentLoaded", function() {
     // Add event listener for the "Report Lost Items" button
-    document.getElementById("reportLostBtn").addEventListener("click", function() {
+    document.getElementById("viewLostBtn").addEventListener("click", function() {
         fetchItems("lostItems");
     });
 
     // Add event listener for the "Report Found Items" button
-    document.getElementById("reportFoundBtn").addEventListener("click", function() {
+    document.getElementById("viewFoundBtn").addEventListener("click", function() {
         fetchItems("foundItems");
     });
 });
@@ -129,5 +111,131 @@ function displayItems(items) {
 
         // Append card to items container
         itemsContainer.appendChild(card);
+    });
+}
+
+// Function to show the report lost item form
+function showReportLostForm() {
+    document.getElementById("reportLostForm").style.display = "block";
+    document.getElementById("reportFoundForm").style.display = "none";
+}
+
+// Function to show the report found item form
+function showReportFoundForm() {
+    document.getElementById("reportFoundForm").style.display = "block";
+    document.getElementById("reportLostForm").style.display = "none";
+}
+
+function reportForm() {
+    // Display success message
+    showMessage(successMessage);
+    // Hide the form after submission
+    document.getElementById("reportFoundForm").style.display = "none";
+    // Prevent default form submission behavior
+    event.preventDefault();
+    console.log("Report form submitted successfully.");
+}
+
+// Function to hide the report lost item form after submission
+function hideReportLostForm() {
+    document.getElementById("reportLostForm").style.display = "none";
+}
+
+// Function to hide the report found item form after submission
+function hideReportFoundForm() {
+    document.getElementById("reportFoundForm").style.display = "none";
+}
+
+// Add event listener for the "Report Lost Items" button
+document.getElementById("reportLostBtn").addEventListener("click", showReportLostForm);
+
+// Add event listener for the "Report Found Items" button
+document.getElementById("reportFoundBtn").addEventListener("click", showReportFoundForm);
+
+// Adding event listeners to report form submit buttons
+document.getElementById("reportLostForm").addEventListener("submit", function(event) {
+    reportLostItem();
+    hideReportLostForm();
+    event.preventDefault(); // Prevent default form submission behavior
+});
+
+document.getElementById("reportFoundForm").addEventListener("submit", function(event) {
+    reportFoundItem();
+    hideReportFoundForm();
+    event.preventDefault(); // Prevent default form submission behavior
+});
+
+
+// Add event listener for the "Report Lost Items" button
+document.getElementById("reportLostBtn").addEventListener("click", showReportLostForm);
+
+// Add event listener for the "Report Found Items" button
+document.getElementById("reportFoundBtn").addEventListener("click", showReportFoundForm);
+
+// Function to report a lost item
+function reportLostItem() {
+    const name = document.getElementById("lostItemName").value;
+    const color = document.getElementById("lostItemColor").value;
+    const description = document.getElementById("lostItemDescription").value;
+
+    // Construct the new lost item object
+    const newItem = {
+        name: name,
+        color: color,
+        description: description,
+        // You can add additional properties here if needed
+    };
+
+    // Send the data to your server using fetch API or XMLHttpRequest
+    // Example:
+    fetch("http://localhost:3000/lostItems", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newItem),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Success:", data);
+        // Optionally, display a success message or perform any other action
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        // Optionally, display an error message or perform any other action
+    });
+}
+
+// Function to report a found item
+function reportFoundItem() {
+    const name = document.getElementById("foundItemName").value;
+    const color = document.getElementById("foundItemColor").value;
+    const description = document.getElementById("foundItemDescription").value;
+
+    // Construct the new found item object
+    const newItem = {
+        name: name,
+        color: color,
+        description: description,
+        // You can add additional properties here if needed
+    };
+
+    // Send the data to your server using fetch API or XMLHttpRequest
+    // Example:
+    fetch("http://localhost:3000/foundItems", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newItem),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Success:", data);
+        // Optionally, display a success message or perform any other action
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        // Optionally, display an error message or perform any other action
     });
 }

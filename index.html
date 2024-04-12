@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="overlay"></div>
     <div class="main">
         <nav>
             <div class="logo">
@@ -21,46 +21,29 @@
                 </ul>
             </div>
         </nav>
-        <div class="info">
-            <div class="overlay"></div>
-            <div id="circle"> 
-                <div class="items one">
-                    <img src="/images/phone.webp" alt="phone">
-                    <div>
-                        <h3>phone </h3>
-                        <p>I lost a black iphone</p>
-                    </div>
-                </div>
-                <div class="items two">
-                    <img src="/images/phone.webp" alt="phone">
-                    <div>
-                        <h3>phone </h3>
-                        <p>I lost a black iphone</p>
-                    </div>
-                </div>
-                <div class="items three">
-                    <img src="/images/phone.webp" alt="phone">
-                    <div>
-                        <h3>phone </h3>
-                        <p>I lost a black iphone</p>
-                    </div>
-                </div>
-                <div class="items four">
-                    <img src="/images/phone.webp" alt="phone">
-                    <div>
-                        <h3>phone </h3>
-                        <p>I lost a black iphone</p>
-                    </div>
-                </div>
+
+        <div class="controls">
+            <button id="viewLostBtn">View Lost Items</button>
+            <button id="viewFoundBtn">View Found Items</button>
+            <div class="report-items">
+                <button id="reportLostBtn">Report Lost Items</button>
+                <button id="reportFoundBtn">Report Found Items</button>
             </div>
         </div>
-        <div class="controls">
-            <button id="reportLostBtn">Report Lost Items</button>
-            <button id="reportFoundBtn">Report Found Items</button>
-            <img src="/images/arrow-up.webp" id="upBtn">
-            <img src="/images/arrow-down.png" id="downBtn">
+
+        <div id="itemsContainer">
+            <div id="home">
+                <div class="catchy-content">
+                    <h2>Welcome to our Lost and Found Website!</h2>
+                    <p>Lost something valuable? We're here to help. <br>
+                        Our platform connects you with people who've found
+                        your lost items. <br> Report lost items easily and browse found items nearby.</p>
+
+                </div>
+                <img src="/images/logo2.webp" alt="">
+
+            </div>
         </div>
-        <div id="itemsContainer"></div>
     </div>
 
     <!-- Sign-in Form -->
@@ -84,7 +67,49 @@
         </form>
     </div>
 
+    <!-- Form for reporting lost items -->
+    <div id="reportLostForm" class="form-container">
+        <form class="form" onsubmit="reportLostItem()">
+            <h2>Report Lost Item</h2>
+            <input type="text" id="lostItemName" placeholder="Item Name" required>
+            <input type="text" id="lostItemColor" placeholder="Item Color" required>
+            <textarea id="lostItemDescription" placeholder="Item Description" required></textarea>
+            <button type="submit">Report Lost Item</button>
+        </form>
+    </div>
+
+    <!-- Form for reporting found items -->
+    <div id="reportFoundForm" class="form-container">
+        <form class="form" onsubmit="reportFoundItem()">
+            <h2>Report Found Item</h2>
+            <input type="text" id="foundItemName" placeholder="Item Name" required>
+            <input type="text" id="foundItemColor" placeholder="Item Color" required>
+            <textarea id="foundItemDescription" placeholder="Item Description" required></textarea>
+            <button type="submit">Report Found Item</button>
+        </form>
+    </div>
+
     <div id="messageContainer" class="message-container"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-section contact-us">
+            <h3>Contact Us</h3>
+            <p>Email: info@lostandfound.com</p>
+            <p>Phone: +1 (123) 456-7890</p>
+        </div>
+        <div class="footer-section faq">
+            <h3>FAQs</h3>
+            <ul>
+                <li>How do I report a lost item?</li>
+                <li>What should I do if I found someone else's item?</li>
+                <li>How can I search for lost items?</li>
+            </ul>
+        </div>
+        <div class="footer-section copy">
+            <p>&copy; 2024 Lost and Found</p>
+        </div>
+    </footer>
 
     <script src="script.js" defer></script>
 </body>

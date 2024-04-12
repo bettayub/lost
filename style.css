@@ -8,9 +8,47 @@
     height: 100vh;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(to right, #9c27b0, #8ecdff);
 
 }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("/images/lostimage.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative; /* Needed for z-index */
+    background-image: url("/images/logo5.jpeg");
+    background-size:cover;
+    background-position:top center;
+    background-repeat: no-repeat;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Adjust the last value (0.5) for darkness */
+    z-index: 1; /* Ensure it's above the background image */
+}
+
+.main {
+    /* Your existing styles for the main content */
+    position: relative; /* Ensure it's above the overlay */
+    z-index: 2; /* Ensure it's above the overlay */
+}
+
+/* Other CSS styles for your elements */
+
+
 nav{
     width:90% ;
     position:sticky ;
@@ -39,71 +77,6 @@ nav{
     color: #fff;
     text-decoration: none;
 }
-.info{
-    width: 1000px;
-    height:1000px ;
-    position:absolute;
-    top:50% ;
-    left: -10%;
-    transform:translateY(-50%) ;
-}
-.lostimage{
-    width:200px ;
-    position:absolute ;
-    top:50% ;
-    left:35% ;
-    transform:translateY(-50%) ;
-    z-index: 1;
-}
-#circle{
-    width: 1000px;
-    height:1000px ;
-    position:absolute;
-    top:0 ;
-    left: 0;
-    border-radius:50%;
-    transform: rotate(0deg);
-    transition: 1s;
-
-}
-.items{
-    position: absolute;
-    display: flex;
-    color: #fff;
-}
-
-.items div{
-    margin-left: 30px;
-
-}
-.items div p{
-    margin-top: 8px;
-}
-
-.items img{
-    width: 70px;
-}
-.one{
-    top:450px ;
-    right:50px ;
-}
-.two{
-    top:150px ;
-    left:350px ;
-    transform: rotate(-90deg);
-}
-.three{
-    bottom:450px ;
-    left:50px ;
-    transform: rotate(-180deg);
-
-}
-.four{
-    bottom:150px ;
-    right: 350px;
-    transform: rotate(-270deg)
-    
-}
 
   .controls button {
     padding: 10px 10px;
@@ -111,8 +84,8 @@ nav{
     background-color: #007bff;
     color: white;
     font-size: 16px;
-    margin-bottom: 200px;
-    margin-right: 120px;
+    margin-bottom: 10px;
+    margin-right: 20px;
     cursor: pointer;
     border-radius: 5px;
   }
@@ -124,8 +97,8 @@ nav{
 
 .controls{
     position:absolute ;
-    right: 10%;
-    top:50% ;
+    right: 3%;
+    bottom:60% ;
     transform: translatey(-50%);
 
 }
@@ -133,28 +106,8 @@ nav{
     margin: 15px 0;
     color: #fff;
 }
-#upBtn{
-    width:15px ;
-    cursor:pointer ;
-}
-#downBtn{
-    width:15px ;
-    cursor:pointer ;
-    transform: rotate(180deg) ;
-}
-.overlay{
-    width:0 ;
-    height: 0;
-    /* border-top:500px solid #fff ;
-    border-bottom: 500px solid #fff;
-    border-left:500px solid #fff ; */
-    border-right:500px solid transparent ;
-    position: absolute;
-    left: 0;
-    top:0 ;
 
-}
-
+ 
 .form-container {
     display: none;
     position: fixed;
@@ -214,13 +167,22 @@ nav{
 }
 
 /* Card layout */
+
+#itemsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
 .card {
     display: flex;
-    flex-direction:row;
+    flex-direction:column;
     border: 1px solid #ddd;
     border-radius: 8px;
+    margin: 10px;
+    color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: 150px; /* Adjust the width as needed */
     height: auto;
 }
@@ -245,3 +207,73 @@ nav{
     font-size: 14px;
 }
 
+
+
+#home img {
+    max-width: 100%; /* Ensure the image fits within its container */
+    border-radius: 30px;
+    margin-left: 50px;
+
+    
+}
+
+.catchy-content {
+    padding: 20px; /* Add padding to create space around the content */
+}
+
+.catchy-content h2 {
+    
+    font-size: 24px; /* Adjust as needed */
+    color: #ffffff; /* Adjust text color */
+}
+
+.catchy-content p {
+    font-size: 16px; /* Adjust as needed */
+    color: #ffffff; /* Adjust text color */
+    text-align:left;
+
+}
+/* CSS for the footer */
+footer {
+    background-color: #1a1919;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-section {
+    margin: 0 20px 20px;
+    flex: 1;
+    max-width: 300px;
+}
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main {
+    flex: 1;
+    overflow-y: auto;
+}
+
+
+.footer-section h3 {
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    margin: 5px 0;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin-bottom: 5px;
+}
